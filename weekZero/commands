@@ -1,0 +1,9 @@
+aws cloudformation validate-template --template-body file://name.json
+
+aws ec2 create-key-pair --key-name KeyExample --querty 'KeyMaterial' --output text > key-example.pem
+
+aws ec2 describe-key-pairs
+
+aws cloudformation create-stack --stack-name exampleStack --template-body file://name.yml
+
+aws cloudformation delete-stack  --stack-name exampleStack
