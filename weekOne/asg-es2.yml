@@ -1,0 +1,64 @@
+Description: Learn EC2 Auto Scaling
+
+Metadata:
+  Instances:
+    Description: EC2Instance
+
+Parameters:
+  KeyName:
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
+    Type: AWS::EC2::KeyPair::KeyName
+    Default: KeyExample
+
+  InstanceType:
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t2.micro
+      - m1.small
+      - m1.large
+    Description: Enter t2.micro, m1.small, or m1.large. Default is t2.micro.
+
+Resources:
+  LaunchConfig:
+    Type: AWS::AutoScaling::LaunchConfiguration
+    Properties:
+      InstanceType:
+        Ref: InstanceType
+      SecurityGroups:
+        - Ref: SSHSecurityGroup
+        - Ref: HTTPSecurityGroup
+      KeyName:
+        Ref: KeyName
+      UserData: !Base64 |
+        #!/bin/bash -x
+        yum install -y java-1.8.0-openjdk.x86_64
+      ImageId: ami-0518bb0e75d3619ca
+
+  SSHSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH access via port 22
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp: 0.0.0.0/0
+
+  HTTPSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable HTTP access via port 80
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '80'
+          ToPort: '80'
+          CidrIp: 0.0.0.0/0        
+  
+  MyAutoScaling:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      AvailabilityZones: !GetAZs ''
+      MinSize: '2'
+      MaxSize: '4'
+      LaunchConfigurationName: !Ref LaunchConfig
