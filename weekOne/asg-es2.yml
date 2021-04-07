@@ -30,6 +30,9 @@ Resources:
         - Ref: HTTPSecurityGroup
       KeyName:
         Ref: KeyName
+      UserData: !Base64 |
+        #!/bin/bash -x
+        yum install -y java-1.8.0-openjdk.x86_64
       ImageId: ami-0518bb0e75d3619ca
 
   SSHSecurityGroup:
