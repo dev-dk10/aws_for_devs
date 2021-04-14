@@ -1,0 +1,12 @@
+touch main.tf
+
+terraform init
+terraform apply or terraform apply -var 'instance_name=YetAnotherName'
+terraform destroy
+
+terraform fmt
+terraform validate
+
+terraform state list
+
+https://github.com/hashicorp/learn-terraform-resources.git

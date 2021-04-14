@@ -1,29 +1,10 @@
 aws s3api create-bucket --bucket my-bucket --region us-west-2
 aws s3api create-bucket --bucket my-bucket --acl private --region us-west-2
 
-
 aws s3api create-bucket --bucket dkushnirov-test --acl private --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2
-
-
-yum -y update
-yum -y install http
-echo "Hello world" > /var/www/html/index.html
-sudo service httpd start
-chkonfig httpd on
-
 
 aws cloudformation delete-stack  --stack-name exampleStack
 
 aws cloudformation create-stack --stack-name exampleStack --template-body file:///es2-s3.yml --capabilities CAPABILITY_NAMED_IAM
-
-
-      UserData: !Base64 |
-        #!/bin/bash -x
-        yum -y update
-        yum -y install http
-        wget –P /var/www/html/ https://dkushnirov-s3-week2.s3.amazonaws.com/index.html
-        sudo service httpd start
-        chkonfig httpd on
-
 
 https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html        
