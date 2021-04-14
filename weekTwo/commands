@@ -1,0 +1,10 @@
+aws s3api create-bucket --bucket my-bucket --region us-west-2
+aws s3api create-bucket --bucket my-bucket --acl private --region us-west-2
+
+aws s3api create-bucket --bucket dkushnirov-test --acl private --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2
+
+aws cloudformation delete-stack  --stack-name exampleStack
+
+aws cloudformation create-stack --stack-name exampleStack --template-body file:///es2-s3.yml --capabilities CAPABILITY_NAMED_IAM
+
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html        
