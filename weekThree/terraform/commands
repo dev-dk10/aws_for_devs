@@ -1,0 +1,9 @@
+terraform init
+terraform apply or terraform apply -var 'instance_name=YetAnotherName'
+terraform destroy
+
+terraform fmt
+terraform validate
+
+terraform state list
+
