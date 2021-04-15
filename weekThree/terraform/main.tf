@@ -84,12 +84,16 @@ resource "aws_iam_role_policy" "InstancePolicy" {
       {
         Effect  = "Allow",
         Action  = "rds:*",
-        Resource = ["arn:aws:rds:us-east-1:*:*"]
+        Resource = ["arn:aws:rds:us-west-2:*:*"]
       },
       {
         Effect = "Allow",
-        Action = "rds:*",
-        Resource = ["arn:aws:rds:us-west-2:*:*"]
+        "Action": [
+          "dynamodb:GetItem",
+          "dynamodb:PutItem",
+          "dynamodb:DeleteItem"
+        ],
+        Resource = ["arn:aws:dynamodb:us-west-2:*:*"]
       },
     ]
   })
