@@ -8,14 +8,6 @@ resource "aws_instance" "EC2InstanceForSNS" {
   tags = {
     Name = "EC2InstanceForSNS"
   }
-
-  user_data = <<-EOF
-                #!/bin/bash
-                sudo yum -y install httpd
-                sudo service httpd start
-                chkconfig httpd on
-                echo "<html><h1>This is WebServer</h1></html>" > /var/www/html/index.html
-                EOF
 }
 
 resource "aws_sns_topic" "sns_topic" {
