@@ -1,0 +1,19 @@
+terraform init
+terraform apply or terraform apply -var 'instance_name=YetAnotherName'
+terraform destroy
+
+terraform fmt
+terraform validate
+
+terraform state list
+
+chmod +x
+
+https://www.postgresql.r2schools.com/how-to-execute-sql-file-in-postgresql/
+
+Syntax to execute .sql file in PostgreSQL:
+psql -h hostname -d database_name -U user_name -p 5432 -a -q -f filepath
+
+Execute the script file .sql with following syntax.
+psql -U james -d r2schools -h localhost  -p 5432 -f createtable.sql
+  
