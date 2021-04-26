@@ -9,3 +9,7 @@ terraform state list
 
 chmod +x
 
+aws sqs send-message --queue-url https://sqs.us-west-2.amazonaws.com/109302736657/sqs_queue --message-body 'test message sqs' --region us-west-2
+aws sqs receive-message --queue-url https://sqs.us-west-2.amazonaws.com/109302736657/sqs_queue --region us-west-2
+
+aws sns publish --topic arn:aws:sns:us-west-2:109302736657:sns_topic --message "Topic" --region us-west-2
