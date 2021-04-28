@@ -1,0 +1,14 @@
+terraform init
+terraform apply or terraform apply -var 'instance_name=YetAnotherName'
+terraform destroy
+
+terraform fmt
+terraform validate
+
+terraform state list
+
+aws dynamodb list-tables --region us-west-2
+
+
+aws dynamodb describe-table --table-name edu-lohika-training-aws-dynamodb --region us-west-2
+aws dynamodb scan --table-name edu-lohika-training-aws-dynamodb --region us-west-2
